@@ -7,17 +7,13 @@ Original file is located at
     https://colab.research.google.com/drive/1GNG3eVHQO4TzAV-YygIss_6pCU46rmO5
 """
 
-
-
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextSendMessage, TextMessage
 import pya3rt
 
-
 app = Flask(__name__)
-
 
 line_bot_api = LineBotApi('zNX+V0h6Kd2vZQlmkkqwkgFDV+RmTgWo9Rpy3szssl4l1fCejpic2koDi+HlBC5n6dlpsGc8HQFdGjIWQ7co92TLRkhehFU8+K3VfAQg4FkcRxPxCsOhcM/DbGk+OMQZ4EEvWNE468Oo36U91+q43QdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('92e70f7f052ae1d83c9709b727d3fc9d')
@@ -28,7 +24,7 @@ def callback():
   body = request.get_data(as_text=True)
 
   try:
-    handler.handle(body.signature)
+    handler.handle(body,signature)
   except InvalidSignatureError:
     abort(400)
   
